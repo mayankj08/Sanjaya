@@ -1,0 +1,88 @@
+
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sanjaya : India Narrates</title>
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+</head>
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/home/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+    </div>
+    
+   
+    
+    <div class="left_content">
+    <div class="title">Welcome to Sanjaya:India Narrates</div>
+	<p>
+   <img src="{% get_static_prefix %}images/earphones.gif" alt="" title="" class="left_img" />
+Creating a social experience to make listening stories fun. Record stories in your own voice, make them lively by adding effects and many more features. 
+    </p>  
+     <div class="title">Latest Stories Uploaded</div>
+     
+    {% for a in stories %}
+     
+    <div class="left_shows" style="font-family:serif;">
+    	<div class="show_date" style="font-size:15px;">{{a.date_submission}}</div>
+        <div class="show_text_content"style="text-transform: uppercase;">
+			<b>{{a.title}}</b>
+		</div> 
+        <a class="more_details" >By:{{a.user_submit}}</a>  
+    </div> 
+    
+    {% endfor %}
+    
+    
+    </div>
+    
+    <div class="right_content">
+    		
+    		
+    		
+	       <form method="post" action="/home/">{% csrf_token %}
+						
+	       
+	       {{form.as_p}}	
+	       <br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+               <input type="image" src="{% get_static_prefix %}images/login.png" alt="Submit" /> 
+               
+ 	       </form>  
+ 	       <br><br><br>
+ 	       <font size="4">
+ 	       <B>NOT REGISTERED YET???</B>
+ 	       <br><br>
+ 	       <a href="/register/">SIGN UP NOW!!!</a>
+ 	       
+ 	       <script>
+						var a = {{count}}
+						if(a==2)
+						{
+							alert('Invalid Username and/or Password')
+						}	
+    		
+    		</script>
+    		
+	       </font>
+     </div>
+        
+    <div id="footer">
+    	<div class="footer_links"> 
+        <a href="">contact us</a>
+        
+        
+        </div>   
+    
+    </div>
+
+
+</div>
+</body>
+</html>

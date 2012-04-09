@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Registration</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+
+
+
+
+</head>
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/home/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+    
+    
+    
+    
+     <div id="menu">
+        <ul>                                                                                                                      
+            <li><a href="/profile/" title="">Profile</a></li>
+			<li><a href="/logout1/" title="">Logout</a></li>
+        </ul>
+    
+    
+		<br/><br/>
+	</div>
+	
+	
+	<br/>
+
+
+		<font face="verdana" color="A90329" size="4"> 
+			<br/>
+		
+		<form method ="post" action = "/rec_search/" >{% csrf_token %}
+					&nbsp;&nbsp; Enter story title to search here:<input type = "text" name = "rec" id = "text1"/><br/><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "submit" value = "Record this story" > 
+		</form>
+		
+		<div style="visibility: {{status1}}">
+				<form method="post" action="/aud/" enctype="multipart/form-data">{% csrf_token %}
+							
+									<input type = "text"  id = "text2" value = "{{a3}}" name="story_title"  >
+									{{form.as_p}}<br>
+									<input type="submit" value="Submit" />
+				</form>  
+	     </div>
+	 
+	 
+
+
+</body>
+</html>

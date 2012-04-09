@@ -1,0 +1,10 @@
+from django.db import models
+
+class story(models.Model):
+	title = models.CharField(max_length=100)
+	date_submission = models.DateTimeField()
+	user_submit = models.CharField(max_length=100)
+	last_modify = models.DateTimeField()
+	file_name = models.CharField(max_length=100)
+
+# Create your models here.

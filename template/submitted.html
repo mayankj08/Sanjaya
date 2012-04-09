@@ -1,0 +1,21 @@
+<html>
+
+<body>
+	<br/><br/><br/>
+		
+
+		<font face="verdana" color="red">
+		<h1><center><b>Stories submitted by you</b></center></h1>
+		</font>
+		
+		
+		
+		<ul>		
+		{% for a in stories %}
+			<li> <h3>  {{a.title}} </h3> </li>
+		{% endfor %}	
+		</ul>
+		
+</body>
+			
+</html>

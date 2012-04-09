@@ -1,0 +1,295 @@
+		
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Profile</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+
+<link type="text/css" href="{% get_static_prefix %}css/blitzer/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-ui-1.8.18.custom.min.js"></script>
+		
+	
+			
+		
+		<script type="text/javascript">
+		$(function(){
+			
+			
+			
+		$( "#dialog" ).dialog(
+		{
+				autoOpen: false,
+				modal:true,
+				width:600,
+				height:300,
+				buttons: { "Ok": function() {  
+					$("#submit").submit()
+					
+					}
+				
+				,"Cancel": function() { $(this).dialog("close"); }}
+				,resizable: false 
+				,show: 'slide'
+				,hide: 'slide'
+		});
+		
+			
+		
+				// Dialog1			
+				$('#dialog1').dialog({
+					autoOpen: false,
+					modal:true,
+					width: 350,
+					height:200,
+					
+					buttons: {
+						"Show / Record the Story ": function() { 
+							$("#search_story").submit() 
+						}, 
+						"Close": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+					,show: 'slide'
+					,hide: 'slide'
+				});
+				
+				// Dialog4			
+				$('#dialog4').dialog({
+					autoOpen: false,
+					modal:true,
+					width: 350,
+					height:200,
+					
+					buttons: {
+						"Listen to this story": function() { 
+							$("#listen").submit() 
+						}, 
+						"Close": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+					,show: 'slide'
+					,hide: 'slide'
+				});
+				
+				// Dialog3			
+				$('#dialog3').dialog({
+					autoOpen: false,
+					modal:true,
+					width: 350,
+					height:200,
+					
+		/*			buttons: {
+						"Listen to this story": function() { 
+							$("#listen").submit() 
+						}, 
+						"Close": function() { 
+							$(this).dialog("close"); 
+						} 
+					} */
+					show: 'slide'
+					,hide: 'slide'
+				});
+				
+					// Tabs
+				$('#tabs').tabs();
+				
+				
+				
+				
+	});
+	
+	
+	
+			function show()
+			{
+				
+				$('#dialog').dialog('open');
+			}	
+			
+			function show1()
+			{
+				
+				$('#dialog1').dialog('open');
+				
+			}
+			function show4()
+			{
+				
+				$('#dialog4').dialog('open');
+				
+			}
+			
+			function show3()
+			{
+				
+				$('#dialog3').dialog('open');
+		//		window.location = "/add_effects/"
+			}
+		</script>
+
+
+
+
+</head>
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/index/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+    
+    
+    
+    
+    
+    <div id="menu">
+        <ul>                                                                                                                      
+            <li><span class="current" style="cursor:pointer" onclick="" title="">Getting Started</span></li>
+             <li><span class="current1" style="cursor:pointer" onclick="show()" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit Story</span></li>
+            <li><span class="current1" style="cursor:pointer" onclick="show2()" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Record Story</span></li>
+            <li><span class="current2" style="cursor:pointer" onclick="show1()" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Storys</span></li>
+            <li><span class="current2" style="cursor:pointer" onclick="show3()" title="">&nbsp;&nbsp;&nbsp;&nbsp;Add Effects</span></li>
+            <li><span class="current4" style="cursor:pointer" onclick="show4()" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Listen</span></li>
+            <li><span class="current5" style="cursor:pointer" onclick="show5()" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</span></li>
+            <li><a href="/logout1/" title="">Logout</a></li>
+        </ul>
+    
+    
+	<br/><br/><br/>
+	<h3 align="right"><b>Hi {{person_name}}</b><br/> </h3>
+
+	</div>
+	
+	
+	<br/><br/><br/>
+	
+	<div id="dialog" title="Submit a Story">
+				<br><br><br>
+				
+				<form method="post" action="/profile/" enctype="multipart/form-data" id="submit"> {% csrf_token %}
+					{{form.as_p}}
+						
+						<h3>*Only .txt files allowed</h3> 
+				
+				</form>
+			
+	</div>
+
+			<!--Tabs-->
+			<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Stories Submitted by you</a></li>
+				<li><a href="#tabs-2">Top Stories</a></li>
+				<li><a href="#tabs-3">Stories Recorded by you</a></li>
+				
+			</ul>
+			<div id="tabs-1">
+						{% for a in stories %}
+							<li> <h3><div style="cursor:pointer;" onclick="dummy(this)" id="t" >{{a.title}}</div> </h3>   </li>
+						{% endfor %}
+			</div>
+			
+			<div id="tabs-2">
+					{% for a in stories_all %}
+							<li> <h3><div style="cursor:pointer;" onclick="dummy(this)" id="t" >{{a.title}}</div> </h3>   </li>
+						{% endfor %}
+			
+			</div>
+			
+			<div id="tabs-3">
+					{% for a in stories_you %}
+							<li> <h3><div style="cursor:pointer;" onclick="dummy(this)" id="t" >{{a.title}}</div> </h3>   </li>
+						{% endfor %}
+			
+			</div>
+			
+		</div>		
+
+				
+		
+		
+			
+	<br/><br/><br/>
+		
+
+		
+		
+		<div id="dialog1" title="Search Story" > 
+				
+				<form method = "post" action="/search_story/" id="search_story"> {% csrf_token %}
+				<br/>Enter Story Title to search here <br/><br/>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "text" name="search2" id="search1" width="100"></input> 
+				</form>
+		</div>
+		
+		<div id="dialog4" title="Listen" > 
+				
+				<form method = "post" action="/listen/" id="listen"> {% csrf_token %}
+				<br/>Enter Story Title to search here <br/><br/>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "text" name="search3" id="search2" width="100"></input> 
+				</form>
+		</div>
+		
+		<div id="dialog3" title="Add_effects" > 
+				
+			<!--	<form method = "post" action="" id="listen"> {% csrf_token %} -->
+				<br/>Select a story that you have recorded to add effects to <br/><br/>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				
+						  
+					  
+					{% for a in stories_you %}
+								<li> <h3><div style="cursor:pointer;" onclick="dummy1(this)" id="t1" >{{a.title}}</div> </h3>   </li>
+					{% endfor %}
+				
+			<!--	</form> -->
+		</div>	
+							
+		<script>
+								function dummy(dum)
+								{
+									var str=dum.innerHTML
+									//alert(temp)
+									//qw=str.search("Submitted on:");
+									//qw1=qw+13;
+									//qw2=str.substring(qw1)
+									
+									//alert(qw2);
+									//$("#submit").submit()
+									window.location = "/profile/" + str + "/"
+								}
+								
+								function show5()
+								{
+									window.location = "/contactus/"
+								}
+								
+								function show2()
+								{
+									window.location = "/record/"
+								}
+								
+								function dummy1(dum)
+								{
+									var str=dum.innerHTML
+									
+									window.location = "/add_effects/" + str + "/"
+								}
+								
+		</script>
+							
+							
+						
+</body>
+</html>

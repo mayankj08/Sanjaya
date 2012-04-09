@@ -1,0 +1,62 @@
+
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Registration</title>
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+</head>
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/home/"><img src="{% get_static_prefix %}images/logo.png	" alt="" title="" border="0" /></a></div>
+        
+    </div>
+    
+  
+    
+	<br/><br/>
+	<font size="5"><center><B>REGISTER</B></center></font> 
+	
+	<form method="post" action="/register/">{% csrf_token %}	
+	<br/>
+				
+				<table align="center">
+				<tr> <td>Name:</td>  <td>{{form.name}}</td></tr>
+				<tr></tr><tr></tr>
+				<tr> <td>Username:</td>  <td>{{form.user_name}}</td></tr>
+				<tr></tr><tr></tr>
+				<tr> <td>Password:</td>  <td>{{form.password}}</td></tr>
+				<tr></tr><tr></tr>
+				<tr> <td>Confirm Pwd:</td>  <td>{{form.confirm_pwd}}</td></tr>
+				<tr></tr><tr></tr>
+				<tr> <td>Email ID:</td>  <td>{{form.email_id}}</td></tr>
+				<tr></tr><tr></tr>
+				<tr></tr>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+				<tr><td></td><td><br/><input type="submit" value="Submit" /></td></tr>
+				
+				</table>
+				
+	 			
+	 
+	</form>
+	
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<div id="footer">
+    	<div class="footer_links">                      
+        <a href="#">contact us</a>
+        
+        
+        </div>   
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Registration</title>
+
+<link type="text/css" href="{% get_static_prefix %}css/blitzer/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+
+				// Accordion
+				$("#accordion").accordion({ header: "h3" });
+					
+					
+				
+				
+				
+			});
+			
+			
+		</script>
+		<style type="text/css">
+			/*demo page css*/
+			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+			.demoHeaders { margin-top: 2em; }
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
+		</style>	
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+
+</head>
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/index/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+    
+    <div id="menu">
+        <ul>                                                                                                                      
+            <li><span class="current" style="cursor:pointer" onclick="show()" title="">Home</span></li>
+<!--           <li><a href="#" title=""></a></li>
+            <li><a href="#" title=""></a></li>
+            <li><a href="#" title=""></a></li>
+            <li><a href="#" title=""></a></li>
+            <li><a href="#" title=""></a></li>  -->
+            <li><a href="/logout1/" title="">Logout</a></li>
+        </ul>
+    
+    
+	<br/><br/>
+<!--	<h3 align="right"><b>Hi {{person_name}}</b><br/> </h3> -->
+
+	</div>
+	<br/><br/><br/>
+	
+<!-- Accordion -->
+<!--		<h2 class="demoHeaders">Sanjaya</h2>  -->
+		<div id="accordion">
+			<div>
+				<h3><a href="#">About Us</a></h3>
+				
+				<div>	
+					<table cellspacing="10">
+
+					<tr>
+					<th width="1500" align="center" style="color : #f00">Advisors</th>
+    
+        
+					</tr>
+					</table>
+					<table>
+					<tr>
+					<th width="750" align="center">Prof. Harrick Vin</th>
+    
+					<th width="750" align="center">Dr. Sachin Lodha</th>
+    
+					</tr>
+  
+					<tr>
+					<td width="750" align="center">Head, SRL, TRDDC</td>
+    
+					<td width="750" align="center">Principal Scientist, TRDDC</td>
+					</tr>
+					</table>
+
+
+					<table cellspacing="10">
+					<tr>
+					<th width="1500" align="center" style="color : #f00">Team Members</th>
+    
+    
+	
+					</tr>
+					</table>	
+					<table>
+	
+					<tr>
+					<th width="500" align="center">Dr. Shirish Karande</th>
+    
+					<th width="500" align="center">Dr. Venkata Pingali</th>
+    
+					<th width="500" align="center">Mr. Srinivasan Iyengar</th>
+    
+					</tr>
+  
+					<tr>
+					<td width="500" align="center">Scientist</td>
+		
+					<td width="500" align="center">Scientist</td>
+    
+					<td width="500" align="center">Researcher</td>
+					</tr>
+					</table>
+
+					<table cellspacing="10">
+					<tr>
+					<th width="500" align="center">Anchal Bang</th>
+    
+					<th width="500" align="center">Kunal Gugale</th>
+    
+					<th width="500" align="center">Mayank Jain</th>
+    
+					</tr>
+  
+					<tr>
+					<td width="500" align="center">B.E.(Comp), MIT Pune</td>
+    
+					<td width="500" align="center">B.E.(Comp), MIT Pune</td>
+    
+					<td width="500" align="center">B.E.(Comp), MIT Pune</td>
+					</tr>
+					</table>
+				</div>
+			</div>
+	
+			<div>
+				<h3><a href="#">Send Feedback</a></h3>
+				<div>
+					
+					
+				
+					<form action="/feedback/" method="get"> 
+					<table width="97%">
+<!--					<tr>
+					<td align="left" valign="top" class="body" id="Contact"><strong>Full Name:</strong></td>
+					<td align="left" valign="top"><input name="FullName" type="text" size="30" /></td>
+
+					</tr>
+					<tr>
+					<td align="left" valign="top" class="body" id="Address"><strong>Address: </strong></td>
+					<td align="left" valign="top"><input name="Address" type="text" size="30" /></td>
+					</tr>
+					<tr>
+					  <td align="left" valign="top" class="body" id="Phone"><strong> Phone: </strong></td>
+
+					  <td align="left" valign="top"><input name="ContactNo" type="text" size="30" /></td>
+					</tr>
+					<tr>
+					  <td align="left" valign="top" class="body" id="Email"><strong> Email: </strong></td>
+					  <td align="left" valign="top"><input name="EmailAdd" type="text" size="30" /></td>
+					</tr> -->
+					<tr>
+					  <td align="left" valign="top" class="body" id="Comments"><strong> Message / Questions: </strong></td>
+
+					  <td align="left" valign="top"><textarea name="Message" cols="50" rows="10"></textarea></td>
+					</tr>
+					<tr>
+					  <td></td> 
+					  
+					  
+					  <td align="left"><input type="submit" name="submit" class="button" value="Submit" /></td>
+					</tr>
+					</table>	
+		</form>	 
+					<center style="color : blue">Your feedback is highly appreciated!</center> 
+				</div>
+			</div>
+			
+		</div>
+	
+</div>
+<script>
+function show()
+		 {
+				window.location="/profile/"
+		 }
+</script>
+
+</body>
+</html>
+	

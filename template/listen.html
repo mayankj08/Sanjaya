@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Registration</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+
+<link type="text/css" href="{% get_static_prefix %}css/blitzer/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-ui-1.8.18.custom.min.js"></script>
+
+		<script type="text/javascript" src="{% get_static_prefix %}jquery.metadata.js"></script> 
+        <script type="text/javascript" src="{% get_static_prefix %}jquery.media.js"></script>
+        <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.4.2.min.js"></script>
+
+<script type="text/javascript" src="{% get_static_prefix %}js/jquery.sound.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#playLink').click(function() {            
+			//{% get_static_prefix %}{{name}}
+			//{{STATIC_URL}}audio/{{name}}
+            $.fn.soundPlay({url: '{% get_static_prefix %}/story_audio/{{name}}', playerId: 'embed_player', command: 'play'});
+            $("#sound_file_name").html("{{name}}");
+        });
+        $('#stopLink').click(function() {
+            $.fn.soundPlay({playerId: 'embed_player', command: 'stop'});
+        });
+    });
+</script>
+
+<!--		<script type="text/javascript">
+		$(function(){
+		$( "#dialog1" ).dialog(
+		{
+				autoOpen: true,
+				modal: false,
+				width:600,
+				height:300,
+				buttons: { "Play": function() {  
+					$("#submit").submit()
+					
+					}
+				
+				,"Pause": function() { $(this).dialog("close"); }}
+				,"Stop": function() { $(this).dialog("close"); }}
+				,resizable: false 
+				
+		}
+		);
+	
+	});
+			function show_box()
+			{
+				
+	//			$('#dialog').dialog('open');
+				window.location="/home/";
+			}	
+		</script> -->
+	<script type="text/javascript">
+	$('a.media').media( { width: 300, height: 20 } );
+	</script>
+	
+</head>
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/index/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+    
+    
+    
+    
+     <div id="menu">
+        <ul>                                                                                                                      
+            <li><span class="current" style="cursor:pointer" onclick="show()" title="">Home</span></li>
+			<li><a href="/logout1/" title="">Logout</a></li>
+        </ul>
+    
+    
+		<br/><br/>
+	</div>
+	
+	
+	<br/>
+
+
+		<font face="verdana" color="A90329" size="4">
+			
+	<center> {{title1}} 
+		
+	
+<!--	<form method="post" action="" enctype="multipart/form-data" id="t1"> {% csrf_token %}
+					{{form.as_p}}
+				
+				
+	</form> -->
+<!--	<input type="text" value={{data}}/>-->
+	<br/>
+	<textarea rows="20" cols="100"> {{data}} </textarea>
+	<br/><br/><br/>
+		
+	</center>
+	</font>
+	 
+	 
+	<center>
+<div id="container">
+    <div id="player-ui">
+        <div class="clear player-info"><span style="float:left">Sound File : </span><span id="sound_file_name"> &nbsp;</span></div>
+        <div class="clear player-commands">
+                <a href="javascript://" id="playLink">
+                    <img src="{% get_static_prefix %}images/play.png" alt="Play" title="Play" />
+                </a>
+                <a href="javascript://" id="stopLink">
+                    <img src="{% get_static_prefix %}images/stop.png" alt="Stop" title="Stop" />
+                </a>
+        </div>
+    </div>    
+</div>
+</center>
+
+
+<script>
+function show()
+{
+	window.location = "/profile/"
+}
+
+</script>
+
+</body>
+</html>

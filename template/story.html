@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Profile</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+</head>
+
+<body>
+
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/index/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+
+<br/><br/>
+
+<font face="verdana" color="A90329"><h1><center><b>{{temp_title}}</b></center></h1></font>
+
+<br/><br/>
+
+<div id="txt"> 
+	<h2>{{temp}}</h2>
+</div>
+
+<form method = "post"  action=" " >  {% csrf_token %}
+		<button type = "button" onclick=" "> Record this story</button>
+		<button type = "button" onclick="redirect()"> Back to Profile</button>
+		<button type = "button" onclick="edit()">Edit this story</button>
+	
+</form>
+
+			<script>
+				function redirect()
+				{
+					window.location = "/profile/"
+				}
+				function edit()
+				{
+						
+				}
+					
+			</script>
+
+
+</body>
+</html>

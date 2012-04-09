@@ -1,0 +1,291 @@
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Profile</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+<link type="text/css" href="{% get_static_prefix %}css/blitzer/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript" src="{% get_static_prefix %}js/jquery.sound.js"></script>
+		
+
+  <script src="{% get_static_prefix %}js/slider2.min.js"></script>
+  <script src="{% get_static_prefix %}js/slider3.min.js"></script>		
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#playLink').click(function() {            
+			//{% get_static_prefix %}{{name}}
+			//{{STATIC_URL}}audio/{{name}}
+            $.fn.soundPlay({url: '{% get_static_prefix %}/story_audio/temp.wav', playerId: 'embed_player', command: 'play'});
+            $("#sound_file_name").html("temp.wav");
+        });
+        $('#stopLink').click(function() {
+            $.fn.soundPlay({playerId: 'embed_player', command: 'stop'});
+        });
+    });
+</script>
+		
+		
+		<script type="text/javascript">
+			$(function(){
+				
+				
+				
+					// Tabs
+				$('#tabs').tabs();
+				
+				
+				
+				$( "#dialogt" ).dialog(
+		{
+				autoOpen: {{status}},
+				modal:true,
+				width:300,
+				height:200/*,
+				buttons: { "Ok": function() {  
+					$("#submit").submit()
+				
+					
+					}
+				
+				,"Cancel": function() { $(this).dialog("close"); }} */
+				,resizable: false 
+				,show: 'slide'
+				,hide: 'slide'
+		});
+				$("#slider").slider({ min: 0, max: 1, step:0.1 });
+				
+			});
+		</script>
+		
+    
+ <script>
+ // $(document).ready(function() {
+  //  $("#slider").slider();
+ // });
+  </script>
+</head>
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/index/"><img src="{% get_static_prefix %}images/logo.png" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+       
+    <div id="menu">
+        <ul>                                                                                                                      
+            <li><span class="current" style="cursor:pointer" onclick="show()" title="">Home</span></li>
+            <li><a href="/logout1/" title="">Logout</a></li>
+        </ul>
+    
+    
+	<br/><br/><br/>
+	</div>
+	
+	<script>
+	function show()
+	{
+				
+			//	$('#dialog2').dialog('open');
+				window.location = "/profile/"
+	}
+	</script>
+	
+	<center><b><font color="red">{{temp_title}}</font></b></center>
+	
+	
+<!--	<textarea rows="23" cols="55">
+	
+	
+	</textarea>
+	
+	<button></button>
+	-->
+	<style type="text/css" media="screen">
+ table { border: 1px solid black;float:left;width:500px;}
+ #table_container{width:1500px;margin:0 auto;}
+</style>
+
+<form method="post" action="/adde/{{temp_title}}/" enctype="multipart/form-data" id="f"> {% csrf_token %}
+
+<div id="table_container">
+  <table>
+    <tr>
+      
+      <td><textarea rows="22" cols="65" id="tarea">
+		{{temp}}
+	
+	</textarea></td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr height="50"></tr>
+    
+    <tr>
+      <td><b>Add Background</b></td>
+      <td>
+    
+    <!--Tabs-->
+			<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Nature</a></li>
+				<li><a href="#tabs-2">Human</a></li>
+				<li><a href="#tabs-3">Animals</a></li>
+				
+				
+			</ul>
+			<div id="tabs-1">
+						
+				<input type="radio" name="group1" value="Thunder"> Thunder<br>
+				<input type="radio" name="group1" value="rt.wav">Rain with Thunder<br>
+				<input type="radio" name="group1" value="Lightening">Lightening<br>				
+						
+			</div>
+			
+			<div id="tabs-2">
+					<input type="radio" name="group1" value="Crying Baby"> Crying Baby<br>
+					<input type="radio" name="group1" value="Applause">Applause<br>			
+						
+			
+			</div>
+						
+			<div id="tabs-3">
+					<input type="radio" name="group1" value="Angry Birds"> Angry Birds<br>
+					<input type="radio" name="group1" value="Angry Pigs">Angry Pigs<br>	
+					<input type="radio" name="group1" value="dog.wav">Dogs Barking<br>	
+			
+			</div>
+			<!--
+			<div id="tabs-4">
+				{% for a in frnd_list %}
+					
+					<input type="radio" name="group1" value={{a.user_submit}}> {{a.user_submit}}<br>
+				{% endfor %}
+			
+			</div>
+			-->
+			
+		</div>		
+
+    
+    </tr>
+   
+   <tr>
+    <td>From:<input type="text" name="text1" style="width:100px">   </td> 
+    <td>To:<input type="text" name="text2" style="width:100px">   </td> 	
+    </tr>
+    <tr><td></td><td><div id="slider"></div></td></tr>
+    <tr>
+    <td></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onmousedown="listen_temp()" value="Add These Effects"></td></tr>
+    
+   
+    
+    
+  </table>
+ 
+  
+  
+  </div>
+  
+  </form>
+	 	       
+	<div id="frnd">
+		<form method="post" action="/frnde/{{temp_title}}/"  id="f1"> {% csrf_token %}
+		
+						<h2> <br/> <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Friends Voice</h2>
+		
+				{% for a in frnd_list %}
+					
+					<input type="radio" name="group1" value={{a.user_submit}}> {{a.user_submit}}<br>
+				{% endfor %}
+			
+			
+    From:<input type="text" name="text1" style="width:100px">   
+    To:<input type="text" name="text2" style="width:100px">   	
+    
+			
+				<input type="submit" value="Make Changes" >
+			
+			
+			</form>
+			
+			
+			</div>
+  
+
+	<div id="dialogt" title="Listen" > 
+		<center>	
+			<!--	<form method = "post" action="/listen/" id="listen"> {% csrf_token %} -->
+		<br/>Listen to the changes<br/><br/>	&nbsp;&nbsp;&nbsp;<br/> 
+		<div id="container">
+		<div id="player-ui">
+        <div class="clear player-info"><span style="float:left">Sound File : </span><span id="sound_file_name"> &nbsp;</span></div>
+        <div class="clear player-commands">
+                <a href="javascript://" id="playLink">
+                    <img src="{% get_static_prefix %}images/play.png" alt="Play" title="Play" />
+                </a>
+                <a href="javascript://" id="stopLink">
+                    <img src="{% get_static_prefix %}images/stop.png" alt="Stop" title="Stop" />
+                </a>  <br/><br/>
+                
+                <input type="button" value="Confirm Changes" onmousedown="getseltext()"> 
+        </div>
+		</div>    
+</div>
+			</center>	
+			<!--	</form> -->
+		</div>	
+  
+  
+  <script type="text/javascript">
+function getseltext()
+{
+    var txt = '';
+     if (window.getSelection)
+    {
+        txt = window.getSelection();
+    }
+    else if (document.getSelection)
+    {
+        txt = document.getSelection();
+    }
+    else if (document.selection)
+    {
+        txt = document.selection.createRange().text;
+        
+    }
+    else return;
+    //alert (txt);
+   window.location = "/confirm_changes/{{temp_title}}";
+   
+   
+   	
+	   
+   
+//document.aform.selectedtext.value =  txt;
+	
+}
+
+function listen_temp()
+{
+	$("#f").submit();
+	
+}
+</script>
+  
+</div>
+
+	

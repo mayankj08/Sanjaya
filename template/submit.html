@@ -1,0 +1,52 @@
+
+{% load static %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Registration</title>
+
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}style.css" media="screen" />
+
+
+
+</head>
+
+
+
+
+<body>
+<div id="main_container">
+
+	<div id="header">
+    	<div id="logo"><a href="/index/"><img src="{% get_static_prefix %}images/logo.gif" alt="" title="" border="0" /></a></div>
+        <div class="on_air"><img src="{% get_static_prefix %}images/onair.gif" alt="" title="" border="0" /></div>
+    </div>
+    
+    <div id="menu">
+        <ul>                                                                                                                      
+            <li><a class="current" href="/index/" title="">home</a></li>
+            <li><a href="#" title="">listen live</a></li>
+            <li><a href="#" title="">latest events</a></li>
+            <li><a href="#" title="">shows</a></li>
+            <li><a href="#" title="">news</a></li>
+            <li><a href="#" title="">gallery</a></li>
+            <li><a href="#" title="">downloads</a></li>
+            <li><a href="#" title="">contact us</a></li>
+        </ul>
+    </div>
+    
+	 <form method="post" action="/upload_file/" enctype="multipart/form-data"> {% csrf_token %}
+	       {{form.as_p}}	
+	       <input type="submit" value="Submit" />
+        </form>   	
+
+
+	
+  
+
+
+</div>
+</body>
+</html>
